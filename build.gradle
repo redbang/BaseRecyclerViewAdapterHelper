@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+    }
+}
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+
+
+group = 'com.github.CymChad'
+version='2.1.6'
+def localMavenRepo = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: localMavenRepo)
+
+            //构造项目的Pom文件
+            pom.project {
+                name = project.name
+                description = 'description'
+            }
+        }
+
+    }
+}
+
+allprojects {
+        repositories {
+				maven { url "https://maven.aliyun.com/nexus/content/repositories/jcenter" }
+				maven { url "https://maven.aliyun.com/nexus/content/repositories/central" }
+				maven { url "https://maven.aliyun.com/repository/jcenter" }
+				maven { url "https://maven.aliyun.com/repository/google" }
+				maven { url "https://maven.aliyun.com/repository/central" }
+				maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+				jcenter()
+				maven { url "https://jitpack.io" }
+				maven { url "https://repository.mulesoft.org/nexus/content/repositories/public/" }
+                mavenCentral()
+            }
+    }
+
+
