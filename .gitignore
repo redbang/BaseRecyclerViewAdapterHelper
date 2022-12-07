@@ -25,11 +25,11 @@ proguard/
 
 # Android Studio project files
 *.iml
-.gradle
+# .gradle
 .idea
 build
 <<<<<<< HEAD
-/build.gradle
+# /build.gradle
 /.idea/
 
 build.gradle
